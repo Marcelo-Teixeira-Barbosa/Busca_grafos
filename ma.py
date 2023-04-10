@@ -270,7 +270,7 @@ busca em largura (BFS) > ok
 
 busca em profundidade (DFS) > ok
 
-busca de custo uniforme (DIJKSTRA) > 
+busca de custo uniforme (DIJKSTRA) > ok
 
 busca de melhor escolha (INFORMED SEARCH) > ok
 
