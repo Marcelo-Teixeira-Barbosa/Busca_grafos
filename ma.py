@@ -2,12 +2,16 @@ import queue
 
 class Node:
     
+        
     id = -1
     pai = None
+    custo = 0
 
     def __init__(self,id):
         self.id = id
  
+    def __lt__(self, other):
+        return self.custo < other.custo
 
 class Grafo:
     h_value = []
@@ -94,7 +98,7 @@ class Grafo:
             
             # Expansão de vizinhos            
             for i in range(self.n):                
-                if(self.matriz[aux.id][i] == 1 and i != aux.pai.id):
+                if(self.matriz[aux.id][i] >= 1 and i != aux.pai.id):
                     node = Node(i)
                     node.pai = aux
                     q.put(node)
@@ -114,7 +118,9 @@ class Grafo:
         while not pq.empty():
             # Tirando o nó com menor custo da fila de prioridade
             # pattern matching
+            # print(pq.queue)
             _, nodeAux = pq.get()
+            print("node: %s custo %s" %(letras[nodeAux.id], nodeAux.custo))
             
             # Teste de Objetivo
             if nodeAux.id == t:
@@ -250,7 +256,7 @@ g.printMatriz()
 m = queue.Queue()
 
 letras = ['A','B','C','D','E','F','G','H','I','J']
-objetivo = g.bl(0, 9)
+objetivo = g.bas(0, 9)
    
 while(objetivo.id != -1):
     print(letras[objetivo.id],end = ' ')
